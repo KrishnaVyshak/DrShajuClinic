@@ -278,7 +278,7 @@ const Services = () => (
           isLarge={true}
           title={<>General dentistry<br/>and checkups</>}
           desc="Regular twice-yearly exams and state-of-the-art X-rays to proactively maintain your oral health."
-          img="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&q=80"
+          img="/a.jpg"
         />
         
         <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">

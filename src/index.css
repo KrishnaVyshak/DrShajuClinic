@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Asap', sans-serif;
+    @apply antialiased text-gray-800 bg-[#f8f9fa];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'BIZ UDPMincho', serif;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-16 md:py-24 px-6 md:px-12 lg:px-24;
+  }
+
+  /* Custom animations */
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out both;
+  }
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out both;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-ken-burns {
+    animation: kenBurns 20s ease-out both infinite alternate;
+  }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+@layer components {
+  /* Complex Hover Animation Bases */
+  .btn-primary, .btn-secondary, .btn-secondary-dark {
+    @apply relative overflow-hidden isolate;
+  }
+
+  .btn-primary::after, .btn-secondary::after, .btn-secondary-dark::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    transform: skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .btn-primary:hover::after, .btn-secondary:hover::after, .btn-secondary-dark:hover::after {
+    left: 150%;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-[#0e98b0] text-white font-sans font-medium rounded-xl transition-all duration-300 cursor-pointer;
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.15),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.1),
+      0 2px 6px rgba(0, 0, 0, 0.12);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-primary:hover {
+    @apply bg-[#0c889d];
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.12),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.12),
+      0 8px 16px -4px rgba(14, 152, 176, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+    @apply bg-[#0a7a8d];
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.15),
+      0 1px 2px rgba(0, 0, 0, 0.1);
+    transform: translateY(1px) scale(0.97);
+  }
+
+  /* Secondary button — light backgrounds (dark text & border) */
+  .btn-secondary {
+    @apply px-8 py-3 bg-transparent text-black font-sans font-medium rounded-xl transition-all duration-300 cursor-pointer;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.6),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.04),
+      0 2px 6px rgba(0, 0, 0, 0.06);
+  }
+
+  .btn-secondary:hover {
+    @apply bg-black text-white;
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.12),
+      0 8px 16px -4px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary:active {
+    @apply bg-gray-900 text-white;
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.2),
+      0 1px 2px rgba(0, 0, 0, 0.08);
+    transform: translateY(1px) scale(0.97);
+  }
+
+  /* Secondary button — dark backgrounds (white text & border) */
+  .btn-secondary-dark {
+    @apply px-8 py-3 bg-white/5 text-white font-sans font-medium rounded-xl transition-all duration-300 cursor-pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.08),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.1),
+      0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  .btn-secondary-dark:hover {
+    @apply bg-white/15;
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.12),
+      0 8px 16px -4px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary-dark:active {
+    @apply bg-white/10;
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.2),
+      0 1px 2px rgba(0, 0, 0, 0.1);
+    transform: translateY(1px) scale(0.97);
+  }
+}
